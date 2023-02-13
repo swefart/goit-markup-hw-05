@@ -8,6 +8,8 @@
   --additional-four-color: #e7e9fc;
   --main-size: 16px;
   --main-font-weight: 500;
+
+  --trns-def: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* =========================== body ===========================*/
@@ -107,10 +109,13 @@ img {
 }
 
 .header-link {
+  position: relative;
   font-weight: var(--main-font-weight);
   font-size: var(--main-size);
   line-height: 1.5;
   color: var(--main-color);
+
+  transition: color var(--trns-def);
 }
 .header-list li + li {
   margin-left: 40px;
@@ -144,24 +149,26 @@ img {
   font-size: var(--main-size);
   line-height: 1.5;
   color: var(--secondary-color);
+  transition: color var(--trns-def);
 }
 .address-item:hover,
 .address-item:focus {
   color: var(--additional-one-color);
 }
 
-.studio {
-  font-weight: var(--main-font-weight);
-  font-size: var(--main-size);
-  line-height: 1.5;
+.current {
   color: var(--additional-one-color);
 }
+.header-link.current::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
 
-.portfolio {
-  font-weight: var(--main-font-weight);
-  font-size: var(--main-size);
-  line-height: 1.5;
-  color: var(--additional-one-color);
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--additional-one-color);
+  border-radius: 2px;
 }
 
 /* =========================== Header ===========================*/
@@ -205,6 +212,8 @@ img {
   border: none;
   border-radius: 4px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+  transition: background-color var(--trns-def);
 }
 
 .hero-btn:hover,
@@ -225,7 +234,6 @@ img {
   align-items: center;
   justify-content: center;
   height: 112px;
-  /* padding: 24px 100px; */
   margin-bottom: 8px;
 
   background-color: var(--additional-two-color);
@@ -329,6 +337,8 @@ img {
   background-color: var(--brand-color);
   border-radius: 50%;
   padding: 12px;
+
+  transition: background-color var(--trns-def);
 }
 .social-link-icon {
   fill: var(--additional-three-color);
@@ -357,6 +367,8 @@ img {
   border: 1px solid #8e8f99;
   border-radius: 4px;
   fill: #8e8f99;
+
+  transition: fill, border-color var(--trns-def);
 }
 .company-link:hover,
 .company-link:focus {
@@ -425,6 +437,7 @@ img {
   padding: 8px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
+  transform: background-color var(--trns-def);
 }
 .footer-social-link-icon {
   fill: var(--additional-three-color);
@@ -464,6 +477,8 @@ Portfolio
   border: 1px solid var(--additional-four-color);
   border-radius: 4px;
   cursor: pointer;
+
+  transform: background-color, color, border-color, box-shadow var(--trns-def);
 }
 .filters-btn:hover,
 .filters-btn:focus {
@@ -485,7 +500,10 @@ Portfolio
   row-gap: 48px;
 }
 .results-item {
+  position: relative;
+
   flex-basis: calc((100% - 48px) / 3);
+  transform: box-shadow var(--trns-def);
 }
 
 .results-item:hover {
@@ -495,7 +513,6 @@ Portfolio
 .results-link {
 }
 .results-img {
-  /* display: inline-block; */
 }
 .results-text {
   display: block;
@@ -519,4 +536,123 @@ Portfolio
   color: var(--secondary-color);
 }
 
+.results-action {
+  position: relative;
+  overflow: hidden;
+}
+
+.results-link:hover .results-action::before {
+  transform: translateY(0);
+}
+
+.results-link:hover .results-action-text {
+  transform: translateY(0) var(--trns-def);
+}
+.results-action::before {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background-color: var(--brand-color);
+
+  transform: translateY(100%);
+  transition: transform 250ms var(--trns-def);
+}
+
+.results-action-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+
+  font-size: var(--main-size);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--additional-two-color);
+
+  transform: translateY(100%);
+  transition: transform 250ms var(--trns-def);
+}
+
 /* =========================== /results ===========================*/
+
+/* =========================== Modal ===========================*/
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(46, 47, 66, 0.4);
+}
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 508px;
+  min-height: 576px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  animation: move 1000ms ease-in 0ms 1 alternate both;
+}
+@keyframes move {
+  0% {
+    transform: translate(-75%, -75%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+.modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  right: 24px;
+  top: 24px;
+
+  width: 24px;
+  height: 24px;
+
+  padding: 0;
+  background-color: var(--additional-four-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transform: background-color var(--trns-def);
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+  background-color: var(--additional-one-color);
+  fill: #ffffff;
+}
+.modal-icon {
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: inherit;
+  pointer-events: none;
+}
+/* =========================== /modal ===========================*/

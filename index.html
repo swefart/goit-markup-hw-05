@@ -26,7 +26,7 @@
           >
           <ul class="header-list list">
             <li class="header-item">
-              <a class="header-link link studio" href="index.html">Studio</a>
+              <a class="header-link link current" href="index.html">Studio</a>
             </li>
             <li class="header-item">
               <a class="header-link link" href="portfolio.html">Portfolio</a>
@@ -60,7 +60,9 @@
             Effective Solutions <br />
             for Your Business
           </h1>
-          <button class="hero-btn" type="button">Order Service</button>
+          <button class="hero-btn" type="button" data-modal-open>
+            Order Service
+          </button>
         </div>
       </section>
       <!-- Оur Features -->
@@ -534,5 +536,17 @@
         </div>
       </div>
     </footer>
+
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button class="modal-btn" type="button" data-modal-close>
+          <svg class="modal-icon" width="8px" height="8px">
+            <use href="./img/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script src="./js/modal.js"></script>
   </body>
 </html>
