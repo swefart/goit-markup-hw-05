@@ -86,7 +86,7 @@ img {
 }
 .logo {
   margin-right: 76px;
-  padding: 16px 0;
+  /* padding: 16px 0; */
   font-family: 'Raleway';
   font-weight: 800;
   font-size: 18px;
@@ -385,25 +385,25 @@ img {
   background-color: var(--main-color);
   padding-top: 100px;
   padding-bottom: 100px;
-  display: flex;
-  justify-content: flex-start;
 }
 .footer-container {
   display: flex;
+  align-items: baseline;
   gap: 100px;
 }
 .footer-info {
 }
 
 .uppertitle {
+  margin-bottom: 16px;
   font-weight: 500;
   font-size: var(--main-size);
   line-height: 1.5;
   color: var(--additional-three-color);
-  padding: 16px 0;
 }
 .logo-footer {
-  margin: 0;
+  margin-bottom: 16px;
+  margin-right: 0;
   color: var(--additional-two-color);
   display: inline-block;
 }
@@ -449,7 +449,7 @@ img {
 }
 .footer-form-title {
   display: block;
-  padding: 16px 0;
+  margin-bottom: 16px;
   font-weight: var(--main-font-weight);
   font-size: var(--main-size);
   line-height: 1.5;
@@ -459,7 +459,7 @@ img {
 }
 .footer-mail-field {
   width: 264px;
-  height: 100%;
+  height: 40px;
   margin-right: 24px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
@@ -474,12 +474,14 @@ img {
   display: flex;
   gap: 16px;
   padding: 8px 24px;
+  height: 100%;
 
   font-weight: var(--main-font-weight);
   font-size: var(--main-size);
   line-height: 1.5;
   letter-spacing: 0.04em;
 
+  cursor: pointer;
   color: var(--additional-three-color);
   border: none;
   border-radius: 4px;
@@ -725,10 +727,6 @@ Portfolio
 }
 
 .modal-form {
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
 }
 .modal-form-label {
   display: block;
@@ -861,6 +859,8 @@ Portfolio
 }
 .form-btn {
   text-align: center;
+  display: block;
+  margin: 0 auto;
 
   width: 169px;
   height: 56px;
@@ -877,7 +877,7 @@ Portfolio
   cursor: pointer;
   color: #ffffff;
 }
-.form-btn:disabled {
+/* .form-btn:disabled {
   cursor: not-allowed;
-}
+} */
 /* =========================== /modal ===========================*/
